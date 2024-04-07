@@ -31,7 +31,7 @@ RAYLIB_PATH            ?= ..\..\raylib
 # Starting in 2019 using ARM64 is mandatory for published apps,
 # Starting on August 2020, minimum required target API is Android 10 (API level 29)
 ANDROID_ARCH           ?= ARM64
-ANDROID_API_VERSION     = 33
+ANDROID_API_VERSION     = 34
 
 ifeq ($(ANDROID_ARCH),ARM)
     ANDROID_ARCH_NAME   = armeabi-v7a
@@ -52,7 +52,7 @@ JAVA_HOME              ?= C:/open-jdk/jdk-22
 ANDROID_HOME           ?= C:/Android/android-sdk
 ANDROID_NDK            ?= C:/Android/android-ndk-r26c
 ANDROID_TOOLCHAIN      ?= $(ANDROID_NDK)/toolchains/llvm/prebuilt/windows-x86_64
-ANDROID_BUILD_TOOLS    ?= $(ANDROID_HOME)/build-tools/32.0.0
+ANDROID_BUILD_TOOLS    ?= $(ANDROID_HOME)/build-tools/34.0.0
 ANDROID_PLATFORM_TOOLS  = $(ANDROID_HOME)/platform-tools
 
 # Android project configuration variables
@@ -285,7 +285,7 @@ zipalign_project_apk_package:
 
 # Create signed APK package using generated Key: $(PROJECT_NAME).apk 
 sign_project_apk_package:
-	$(ANDROID_BUILD_TOOLS)/apksigner sign --ks $(PROJECT_BUILD_PATH)/$(PROJECT_NAME).keystore --ks-pass pass:$(APP_KEYSTORE_PASS) --key-pass pass:$(APP_KEYSTORE_PASS) --out $(PROJECT_NAME).apk --ks-key-alias $(PROJECT_NAME)Key $(PROJECT_BUILD_PATH)/bin/$(PROJECT_NAME).aligned.apk
+	$(ANDROID_BUILD_TOOLS)/apksigner sign --min-sdk-version 22 --ks $(PROJECT_BUILD_PATH)/$(PROJECT_NAME).keystore --ks-pass pass:$(APP_KEYSTORE_PASS) --key-pass pass:$(APP_KEYSTORE_PASS) --out $(PROJECT_NAME).apk --ks-key-alias $(PROJECT_NAME)Key $(PROJECT_BUILD_PATH)/bin/$(PROJECT_NAME).aligned.apk
 
 # Install $(PROJECT_NAME).apk to default emulator/device
 # NOTE: Use -e (emulator) or -d (device) parameters if required
