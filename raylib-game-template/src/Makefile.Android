@@ -50,7 +50,7 @@ endif
 # NOTE: JAVA_HOME must be set to JDK (using OpenJDK 13)
 JAVA_HOME              ?= C:/open-jdk/jdk-22
 ANDROID_HOME           ?= C:/Android/android-sdk
-ANDROID_NDK            ?= C:/Android/android-ndk-r26c
+ANDROID_NDK            ?= C:/Android/android-ndk-r26d
 ANDROID_TOOLCHAIN      ?= $(ANDROID_NDK)/toolchains/llvm/prebuilt/windows-x86_64
 ANDROID_BUILD_TOOLS    ?= $(ANDROID_HOME)/build-tools/34.0.0
 ANDROID_PLATFORM_TOOLS  = $(ANDROID_HOME)/platform-tools
